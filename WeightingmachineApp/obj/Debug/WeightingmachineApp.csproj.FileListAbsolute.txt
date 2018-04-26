@@ -1,0 +1,11 @@
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\bin\Debug\WeightingmachineApp.exe
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\bin\Debug\WeightingmachineApp.exe.config
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\obj\Debug\WeightingmachineApp.Main.resources
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\obj\Debug\WeightingmachineApp.Properties.Resources.resources
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\obj\Debug\WeightingmachineApp.Resource.resources
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\obj\Debug\WeightingmachineApp.csproj.GenerateResource.Cache
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\obj\Debug\WeightingmachineApp.exe.licenses
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\obj\Debug\WeightingmachineApp.exe
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\obj\Debug\WeightingmachineApp.pdb
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\bin\Debug\WeightingmachineApp.pdb
+C:\Users\ltdung\Documents\visual studio 2012\Projects\WeightingmachineApp\WeightingmachineApp\obj\Debug\WeightingmachineApp.csprojResolveAssemblyReference.cache
