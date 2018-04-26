@@ -63,8 +63,8 @@ namespace WeightingmachineApp.Helper
             Font font = new Font("Times New Roman", 12, FontStyle.Bold);
             Font fonttime = new Font("Times New Roman", 10, FontStyle.Bold);
 
-            int x = Convert.ToInt32(_Setting[6].Trim()),//80
-                y = Convert.ToInt32(_Setting[7].Trim());//90
+            int x = Convert.ToInt32(_Setting[6].Trim()),//180
+                y = Convert.ToInt32(_Setting[7].Trim());//115
             for (int i = 0; i < 3; i++)
             {
                 e.Graphics.DrawString(currentTruck.CheckInTime.ToString(),
@@ -78,8 +78,8 @@ namespace WeightingmachineApp.Helper
                     font, Brushes.Black, x + 22, y + 230);
                 e.Graphics.DrawString(currentTruck.SecondWeight.ToString() + " Kg",
                     font, Brushes.Black, x + 22, y + 260);
-                //e.Graphics.DrawString(currentTruck.Note,
-                //  font, Brushes.Black, x + 27, y + 330);      
+                e.Graphics.DrawString(currentTruck.Note,
+                  font, Brushes.Black, x - 40, y + 405);      
                 x += 286;
             }
             e.HasMorePages = false;

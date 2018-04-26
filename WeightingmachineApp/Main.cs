@@ -29,8 +29,9 @@ namespace WeightingmachineApp
 
         ITruckDAL _truckDAL = new TruckDALService();
         ITruckInOut _truckInOut = new TruckInOutService();
-        Truck _truck = new Truck();         
-
+        Truck _truck = new Truck();
+        private string Gate { set; get; }
+        List<string> ports = new List<string>();     
         public System.IO.Ports.SerialPort PORT//Serial Weighing
         {
             get
@@ -55,27 +56,47 @@ namespace WeightingmachineApp
 
             this.Text = ConfigurationSettings.AppSettings["NAME"].ToString();
             Setting4Print = ConfigurationSettings.AppSettings["Setting4Print"].ToString();
-           
+            Gate = ConfigurationSettings.AppSettings["GATE"].ToString();
+            switch (Gate)
+            {
+                case "B":
+                    ports = new List<string>(new string[] { "Cổng Bắc Trước", "Cổng Bắc Sau" });              
+                    break;
+                case "N":
+                    ports = new List<string>(new string[] { "Cổng Nam Trái", "Cổng Nam Phải" });                   
+                    break;
+                case "A":
+                    ports = new List<string>(new string[] { "Cổng Bắc Trước", "Cổng Bắc Sau","Cổng Nam Trái", "Cổng Nam Phải" });                   
+                    break;
+                default:
+                    break;
+                    
+            }
+            foreach( var a in ports)
+            {
+                cmbWeight.Items.Add(a);
+            }
+            cmbWeight.SelectedIndex = 0;
         }
         private string ChoicePORT()
         {
             string result = string.Empty;           
-            switch(cmbWeight.SelectedIndex)
+            switch(cmbWeight.SelectedItem.ToString())
             {
-                case 0:
-                    result = ConfigurationSettings.AppSettings["SOUNTH_LEFT"].ToString();//GATE SOUNTH LEFT
+                case "Cổng Nam Trái":
+                    result = ConfigurationSettings.AppSettings["SOUTH_LEFT"].ToString();//GATE SOUNTH LEFT
                     break;
-                case 1:
-                   result = ConfigurationSettings.AppSettings["SOUNTH_RIGHT"].ToString();//GATE SOUNTH RIGHT
+                case "Cổng Nam Phải":
+                   result = ConfigurationSettings.AppSettings["SOUTH_RIGHT"].ToString();//GATE SOUNTH RIGHT
                     break;
-                case 2:
+                case "Cổng Bắc Trước":
                    result = ConfigurationSettings.AppSettings["NORTH_FRONT"].ToString();//GATE NORTH FONT
                     break;
-                case 3:
+                case "Cổng Bắc Sau":
                    result = ConfigurationSettings.AppSettings["NORTH_TAIL"].ToString();//GATE NORTH TAIL
                     break;
                 default:
-                     result = ConfigurationSettings.AppSettings["SOUNTH_LEFT"].ToString();//GATE SOUNTH LEFT
+                     result = ConfigurationSettings.AppSettings["SOUTH_LEFT"].ToString();//GATE SOUNTH LEFT
                     break;
             }          
             return result;
@@ -436,8 +457,7 @@ namespace WeightingmachineApp
         //Show Button Truck In Out
         //
         private void BtnShow4Truck()
-        {
-            cmbWeight.SelectedIndex = 0;
+        {            
             btnSearchTruck.Visible = true;
             btnInTruck.Visible = false;
             btnOutTruck.Visible = false;

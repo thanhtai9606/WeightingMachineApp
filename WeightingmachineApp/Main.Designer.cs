@@ -325,11 +325,6 @@
             this.cmbWeight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbWeight.Font = new System.Drawing.Font("Tahoma", 14.25F);
             this.cmbWeight.FormattingEnabled = true;
-            this.cmbWeight.Items.AddRange(new object[] {
-            "Cổng Nam Trái",
-            "Cổng Nam Phải",
-            "Cổng Bắc Trước",
-            "Cổng Bắc Sau"});
             this.cmbWeight.Location = new System.Drawing.Point(212, 181);
             this.cmbWeight.MinimumSize = new System.Drawing.Size(713, 0);
             this.cmbWeight.Name = "cmbWeight";

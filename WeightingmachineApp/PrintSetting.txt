@@ -1,0 +1,4 @@
+#Setting4Print="Paper Type; Paper Height; Paper Weight; IsPrintFrame; FrameX; FrameY; OrginX; OrginY";
+#c.Setting4Print="V;800;780;False;0;0;140;120" 
+c.Setting4Print="V;800;1000;False;-70;-5;180;115" #EPSON LQ-680 Pro
+#c.Setting4Print="V;800;1000;False;-70;-5;80;90" #EPSON L310 Dot Printer
