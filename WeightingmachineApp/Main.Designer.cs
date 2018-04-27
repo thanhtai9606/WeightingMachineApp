@@ -220,7 +220,6 @@
             this.txtVehicleNO.Name = "txtVehicleNO";
             this.txtVehicleNO.Size = new System.Drawing.Size(713, 30);
             this.txtVehicleNO.TabIndex = 28;
-            this.txtVehicleNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVehicleNO_KeyDown);
             // 
             // txtFirstWeight
             // 

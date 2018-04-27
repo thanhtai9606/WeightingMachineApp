@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Trucks>
   <Truck>
-    <VoucherID>3ff21bfa-c375-4f56-8122-5fdf8a66b7b0</VoucherID>
+    <VoucherID>ab390684-4ba2-49f3-b294-5ca862dbb33e</VoucherID>
     <VehicleNO>1</VehicleNO>
-    <CheckInTime>2018-04-26 14:05:41</CheckInTime>
+    <CheckInTime>2018-04-27 16:43:24</CheckInTime>
     <CheckOutTime></CheckOutTime>
     <FirstWeight>0</FirstWeight>
     <SecondWeight>0</SecondWeight>
-    <Note></Note>
+    <Note>cxzcxzczc</Note>
     <Status>I</Status>
   </Truck>
 </Trucks>
