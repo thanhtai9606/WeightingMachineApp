@@ -30,9 +30,12 @@ namespace WeightingmachineApp
         ITruckDAL _truckDAL = new TruckDALService();
         ITruckInOut _truckInOut = new TruckInOutService();
         Truck _truck = new Truck();
-        private string Gate { set; get; }
-        List<string> ports = new List<string>();     
-        public System.IO.Ports.SerialPort PORT//Serial Weighing
+        frmSetting _Setting = new frmSetting();    
+        List<string> ports = new List<string>();
+
+        public delegate void ReloadConfig();//Use delegate command to trigger cmbWeight after choice Gate
+        public ReloadConfig LoadConfig;
+        public System.IO.Ports.SerialPort PORT//Serial Weighting
         {
             get
             {
@@ -50,32 +53,41 @@ namespace WeightingmachineApp
             base.OnClosed(e);
         }
 
-        private void EGATE_Load(object sender, EventArgs e)
+        public void EGATE_Load(object sender, EventArgs e)
         {
             BtnShow4Truck();           
 
             this.Text = ConfigurationSettings.AppSettings["NAME"].ToString();
             Setting4Print = ConfigurationSettings.AppSettings["Setting4Print"].ToString();
-            Gate = ConfigurationSettings.AppSettings["GATE"].ToString();
+            string strGate = ConfigurationSettings.AppSettings["GATE"].ToString();          
+             DataSourceList(strGate);
+           
+        }
+        /// <summary>
+        /// Load all Weighting in Gate is selected
+        /// Create by Isaac on 03/05/2018
+        /// </summary>
+        /// <param name="Gate"></param>
+        public void DataSourceList( string Gate)
+        {
+           
             switch (Gate)
             {
                 case "B":
-                    ports = new List<string>(new string[] { "Cổng Bắc Trước", "Cổng Bắc Sau" });              
+                    ports = new List<string>(new string[] { "Cổng Bắc Trước", "Cổng Bắc Sau" });
                     break;
                 case "N":
-                    ports = new List<string>(new string[] { "Cổng Nam Trước", "Cổng Nam Phải" });                   
+                    ports = new List<string>(new string[] { "Cổng Nam Trước", "Cổng Nam Phải" });
                     break;
                 case "A":
-                    ports = new List<string>(new string[] { "Cổng Bắc Trước", "Cổng Bắc Sau","Cổng Nam Trước", "Cổng Nam Phải" });                   
+                    ports = new List<string>(new string[] { "Cổng Bắc Trước", "Cổng Bắc Sau", "Cổng Nam Trước", "Cổng Nam Phải" });
                     break;
                 default:
                     break;
-                    
-            }
-            foreach( var a in ports)
-            {
-                cmbWeight.Items.Add(a);
-            }
+
+            }          
+            cmbWeight.DataSource = ports.ToList();           
+            cmbWeight.Refresh();
             cmbWeight.SelectedIndex = 0;
         }
         private string ChoicePORT()
@@ -235,9 +247,22 @@ namespace WeightingmachineApp
             btnPrintTruck.Click += new EventHandler(btnPrintTruck_Click);
             btnUpWeightTruck.Click += new EventHandler(btnUpWeight_Click);
             cmbWeight.SelectedIndexChanged += new EventHandler(cmbWeight_SelectedIndexChanged);
-            txtVehicleNO.KeyDown += txtVehicleNO_KeyDown;
+            txtVehicleNO.KeyDown += txtVehicleNO_KeyDown;           
           
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            _Setting = new frmSetting();
+            if (keyData == (Keys.F3))
+            {
+                _Setting.ConfigEvent += DataSourceList;
+                _Setting.Show();    
+                
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+       
 
         #region Data Process        
         private void SearchTruck()
@@ -457,8 +482,6 @@ namespace WeightingmachineApp
             }
             btnWeightTruck.Enabled = false;
             btnUpWeightTruck.Enabled = false;
-
-            //BtnShow4Truck();
         }        
         private void btnPrintTruck_Click(object sender, EventArgs e)
         {
@@ -566,8 +589,12 @@ namespace WeightingmachineApp
             //DataReceived
             serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);
 
-           
-            
+
+
+        }
+         public void Msg()
+        {
+            MessageBox.Show("x", "OK", MessageBoxButtons.OK);
         }
 
     }

@@ -1,13 +1,2 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Trucks>
-  <Truck>
-    <VoucherID>ab390684-4ba2-49f3-b294-5ca862dbb33e</VoucherID>
-    <VehicleNO>1</VehicleNO>
-    <CheckInTime>2018-04-27 16:43:24</CheckInTime>
-    <CheckOutTime></CheckOutTime>
-    <FirstWeight>0</FirstWeight>
-    <SecondWeight>0</SecondWeight>
-    <Note>cxzcxzczc</Note>
-    <Status>I</Status>
-  </Truck>
-</Trucks>
+<Trucks />
