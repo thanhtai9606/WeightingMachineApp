@@ -17,7 +17,8 @@ namespace WeightingmachineApp.Contact
         Truck FindUpdateStatus(string voucherid, string status);
         OperationResult UpdateTruck(Truck truck);
         OperationResult Remove(string voucherid);   
-        XDocument ReadFile(string filename);   
+        XDocument ReadFile(string filename);
+        List<Truck> GetAllTrucks();
         void Save();
     }
 }

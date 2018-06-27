@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace WeightingmachineApp.Implementation
         XDocument xDoc;
         OperationResult operationResult = new OperationResult();
         private Truck _truck = new Truck();
-        string strFile = "data.xml";
+        string strFile = @"data.xml";
 
         public OperationResult CreateTruck(Truck truck)
         {
@@ -127,7 +128,7 @@ namespace WeightingmachineApp.Implementation
         }     
         public void Save()
         {
-            xDoc.Save("data.xml");
+            xDoc.Save(strFile);
 
         }
         public OperationResult Remove(string voucherid)
@@ -171,6 +172,32 @@ namespace WeightingmachineApp.Implementation
             }
 
             return _truck;
+        }
+        public List<Truck> GetAllTrucks()
+        {
+           
+            xDoc = ReadFile(strFile);
+            List<XElement> currentTruck = xDoc.Descendants("Truck").ToList();
+            List<Truck> ls = new List<Truck>();
+            foreach(var i in currentTruck)
+            {
+                _truck = new Truck();
+                if (currentTruck != null)
+                {
+                    _truck.VoucherID = i.Element("VoucherID").Value;
+                    _truck.VehicleNO = i.Element("VehicleNO").Value;
+                    _truck.CheckInTime = i.Element("CheckInTime").Value;
+                    _truck.CheckOutTime = i.Element("CheckOutTime").Value;
+                    _truck.FirstWeight = decimal.Parse(i.Element("FirstWeight").Value);
+                    _truck.SecondWeight = decimal.Parse(i.Element("SecondWeight").Value);
+                    _truck.Note = i.Element("Note").Value;
+                    _truck.Status = i.Element("Status").Value;
+                }
+                else { _truck = null; }
+                ls.Add(_truck);
+            }
+
+            return ls;
         }
         
     }
